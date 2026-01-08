@@ -13,9 +13,13 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        // 
+        // Create new array with the length of 'length'.
+        //Variable to have number multiply by.
+        //Create a loop to run 'length' number of times.
+        //Adds a new element into the new array. Each element is a multiple of the 'number'.
+        //Increments 'multiply by' variable by 1. So next loop will multiply by 2, then 3, and so on.
+
         var result = new double[length];
-        //
         var y = 1;
         for (var i = 0; i < length; i++)
         {
@@ -40,6 +44,15 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //Variable to hold the last index number of the data list
+        //Variable to hold the element to be removed from the end of the list and then insert it at the beginnining of the list.
+        //Create a loop that will repeat 'amount' number of times.
+        //Find the last index.
+        //Find the element that goes to the last index.
+        //Remove the last element by the last index.
+        //Insert the removed element into the beginning of the list.
+
         var LstIdx = 0;
         var x = 0;
         for (var i = 0; i < amount; i++)
