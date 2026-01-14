@@ -11,9 +11,11 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
+        // Scenario: adding one into queu and then deque
         // Expected Result: 
         Console.WriteLine("Test 1");
+        var service = new CustomerService(0);
+        service.AddNewCustomer();
 
         // Defect(s) Found: 
 
@@ -67,7 +69,7 @@ public class CustomerService {
     /// </summary>
     private void AddNewCustomer() {
         // Verify there is room in the service queue
-        if (_queue.Count > _maxSize) {
+        if (_queue.Count >= _maxSize) {
             Console.WriteLine("Maximum Number of Customers in Queue.");
             return;
         }
