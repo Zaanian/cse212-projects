@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 public static class SetsAndMaps
 {
@@ -22,8 +23,47 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        var setpairs = new List<string>();
+        var setWords = new HashSet<string>(words);
+
+        var check = 0;
+        var check2 = 0;
+
+        foreach (var w in setWords)
+        {
+            var string1 = w[0];
+            var string2 = w[1];
+
+
+
+            var word2 = string.Concat(string2, string1);
+
+            if (setWords.Contains(word2) && w != word2)
+            {
+                check++;
+                Console.WriteLine($"--{word2}--");
+                setpairs.Add($"{w} & {word2}");
+                setWords.Remove(word2);
+
+            }
+            else
+            {
+                check2++;
+                Console.WriteLine("word not found");
+
+            }
+
+
+        }
+
+
+        string[] returnArray = setpairs.ToArray();
+
+
+
+        return returnArray;
     }
+
 
     /// <summary>
     /// Read a census file and summarize the degrees (education)
