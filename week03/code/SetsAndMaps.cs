@@ -111,8 +111,55 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        // TODO Problem 3 - ADD YOUR CODE 
+
+        var store1 = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        var store2 = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
+        var noSpaces1 = word1.Replace(" ", "");
+        var noSpaces2 = word2.Replace(" ", "");
+
+        string[] word1Array = noSpaces1.ToCharArray().Select(c => c.ToString()).ToArray();
+        string[] word2Array = noSpaces2.ToCharArray().Select(c => c.ToString()).ToArray();
+
+        Console.WriteLine(noSpaces1);
+        foreach (var key in word1Array)
+        {
+            if (store1.ContainsKey(key))
+            {
+                store1[key]++;
+            }
+            else
+            {
+                store1.Add(key, 1);
+            }
+        }
+
+        foreach (var key in word2Array)
+        {
+            if (store2.ContainsKey(key))
+            {
+                store2[key]++;
+            }
+            else
+            {
+                store2.Add(key, 1);
+            }
+        }
+
+        foreach (KeyValuePair<string, int> pair in store1)
+        {
+            if (!store2.TryGetValue(pair.Key, out int value2))
+            {
+                return false;
+            }
+
+            if (!EqualityComparer<int>.Default.Equals(pair.Value, value2))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /// <summary>
