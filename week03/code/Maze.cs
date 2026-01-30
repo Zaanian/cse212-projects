@@ -33,6 +33,23 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        // x - 1
+        var move = -1;
+        //Console.WriteLine("left");
+        var key = (_currX, _currY);
+        var value = _mazeMap[key];
+
+        var count = 0;
+
+        if (_currX + move == 0 || value[count] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+
+        }
+        else
+        {
+            _currX = _currX + move;
+        }
     }
 
     /// <summary>
@@ -42,6 +59,23 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        // x + 1
+        var move = 1;
+        //Console.WriteLine("right");
+
+        var key = (_currX, _currY);
+        var value = _mazeMap[key];
+
+        var count = 1;
+
+        if (_currX + move == 7 || value[count] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        else
+        {
+            _currX = _currX + move;
+        }
     }
 
     /// <summary>
@@ -51,6 +85,25 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        // y - 1
+
+        var move = -1;
+        //Console.WriteLine("up");
+        var key = (_currX, _currY);
+        var value = _mazeMap[key];
+
+        var count = 2;
+
+
+        if (_currY + move == 0 || value[count] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+
+        }
+        else
+        {
+            _currY = _currY + move;
+        }
     }
 
     /// <summary>
@@ -60,6 +113,23 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        // y + 1
+        var move = 1;
+        //Console.WriteLine("down");
+        var key = (_currX, _currY);
+        var value = _mazeMap[key];
+
+        var count = 3;
+
+        if (_currY + move == 7 || value[count] == false)
+        {
+            throw new InvalidOperationException("Can't go that way!");
+
+        }
+        else
+        {
+            _currY = _currY + move;
+        }
     }
 
     public string GetStatus()
