@@ -15,7 +15,18 @@ public static class Recursion
     public static int SumSquaresRecursive(int n)
     {
         // TODO Start Problem 1
-        return 0;
+        if (n <= 0)
+        {
+            return 0;
+        }
+        else
+        {
+            var x = n * n;
+
+            return x + SumSquaresRecursive(n - 1);
+        }
+
+
     }
 
     /// <summary>
@@ -40,6 +51,17 @@ public static class Recursion
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
         // TODO Start Problem 2
+
+        if (word.Length == size)
+        {
+            results.Add(word);
+        }
+
+        for (int i = 0; i < letters.Length; i++)
+        {
+            var letterNew = letters.Remove(i, 1);
+            PermutationsChoose(results, letterNew, size, word + letters[i]);
+        }
     }
 
     /// <summary>
@@ -84,8 +106,9 @@ public static class Recursion
     /// 'remember' has already been added as an input parameter to 
     /// the function for you to complete this task.
     /// </summary>
-    public static decimal CountWaysToClimb(int s, Dictionary<int, decimal>? remember = null)
+    public static long CountWaysToClimb(int s, Dictionary<int, long>? remember = null)
     {
+
         // Base Cases
         if (s == 0)
             return 0;
@@ -97,9 +120,21 @@ public static class Recursion
             return 4;
 
         // TODO Start Problem 3
+        if (remember == null)
+        {
+            remember = new Dictionary<int, long>();
+        }
+
+        if (remember.ContainsKey(s))
+        {
+            return remember[s];
+        }
 
         // Solve using recursion
-        decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        long ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+
+        remember[s] = ways;
+
         return ways;
     }
 
@@ -129,10 +164,11 @@ public static class Recursion
     {
         // If this is the first time running the function, then we need
         // to initialize the currPath list.
-        if (currPath == null) {
+        if (currPath == null)
+        {
             currPath = new List<ValueTuple<int, int>>();
         }
-        
+
         // currPath.Add((1,2)); // Use this syntax to add to the current path
 
         // TODO Start Problem 5
